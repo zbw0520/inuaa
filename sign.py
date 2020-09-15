@@ -39,13 +39,13 @@ def login(login_id, login_password):
         try:
             r = requests.get('https://m.nuaa.edu.cn/uc/wap/login')
             print('get login page:', r.status_code)
-            cookie = requests.structures.CaseInsensitiveDict(r.headers)['Set-Cookie']
+            cookie = r.headers
             
             cookie = re.search(r'eai-sess=([a-zA-Z0-9]+)', cookie).group(0)
 
             r = requests.get('https://m.nuaa.edu.cn/uc/wap/login/check', headers={'Cookie':cookie}, data='username={}&password={}'.format(login_id, login_password))
             print('login...:', r.status_code)
-            cookie2 = requests.structures.CaseInsensitiveDict(r.headers)['Set-Cookie']
+            cookie2 = r.headers
             cookie = cookie + '; ' + re.search(r'UUkey=([a-zA-Z0-9]+)', cookie2).group(0)
             print(cookie)
             return cookie        
