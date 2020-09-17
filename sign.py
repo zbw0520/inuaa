@@ -9,6 +9,8 @@ id = '学号'
 password = '密码'
 
 try_times = 2
+
+# 抓的包直接复制的，其实只要cookie和data就好了
 headers = {
     'Host': 'm.nuaa.edu.cn',
     'Connection': 'close',
