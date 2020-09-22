@@ -5,7 +5,6 @@ from email.mime.text import MIMEText
 from email.header import Header
 
 # 通过邮件给单个对象发消息
-# mail_username: xxx@xxx.xxx 即是登陆账户又是发件人
 def send_mail(mail_username, mail_password, mail_host, receiver, text, subject, receiver_name, sender_name):
     try:
         message = MIMEText(text, 'plain', 'utf-8')
