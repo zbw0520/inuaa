@@ -48,7 +48,7 @@ post_data = 'sfzhux=0&zhuxdz=&szgj=&szcs=&szgjcs=&sfjwfh=0&sfyjsjwfh=0&sfjcjwfh=
 
 def sendmsg(msg):
     if receiver != 'xxxxxxxxx@qq.com':
-        return send_mail(mail_username, mail_password, mail_host, receiver, msg, msg, '童鞋', 'inuaa打卡姬')
+        send_mail(mail_username, mail_password, mail_host, receiver, msg, msg, '童鞋', 'inuaa打卡姬')
 
 
 # 登陆获得cookie
@@ -85,8 +85,8 @@ def login(login_id, login_password, login_headers):
 
 # 签到
 def sign(m, d):
-    try:
-        for _ in range(try_times):
+    for _ in range(try_times):
+        try:
             time.sleep(0.5)
             r = requests.post('https://m.nuaa.edu.cn/ncov/wap/default/save',
                               data=post_data.format(int(time.time()), m, d - 1), headers=headers)
@@ -97,10 +97,10 @@ def sign(m, d):
                 return True
             else:
                 login(id, password, headers)
-    except:
-        print('except')
-        pass
-        # print(r.request.body)
+        except:
+            print('except')
+            pass
+            # print(r.request.body)
     sendmsg('打卡失败')
     return False
 
