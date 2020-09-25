@@ -11,8 +11,8 @@ from send_mail import send_mail
 # 如果发包过快会造成502，如果给多个同学打卡请注意一下请求速度
 try_times = 2
 
-# 每次requests请求的延迟(s)，太低会封IP
-delay = 5
+# 每次requests请求的延迟(s秒)，太低会封IP
+delay = 3
 
 # headers，所有的请求都用这个作为headers
 headers = {
@@ -140,16 +140,17 @@ def main():
             to_sign_list = users.copy()
 
             # 给每个人打卡
-            for user in to_sign_list:
+            new_list = []   # 未完成打卡的暂时放这里
+            for user in to_sign_list[:]:
                 print('**********' + user['name'] + '**********')
                 if sign(t.tm_mon, t.tm_mday, user, smtp_host, mail_username, mail_password):
                     print('Sign for {} on {}.{} successfully!'.format(
                         user['name'], t.tm_mon, t.tm_mday))
-                    to_sign_list.remove(user)   # 移除打卡成功的用户
                 else:
                     print('Sign for {} on {}.{} failed!'.format(
                         user['name'], t.tm_mon, t.tm_mday))
-
+                    new_list.append(user)
+            to_sign_list = new_list
             last_post = t.tm_mday   # 更新日期
 
         elif len(to_sign_list) != 0:
@@ -158,16 +159,17 @@ def main():
         
             print('----------重新打卡尝试----------')
             # 给每个失败的人打卡
-            for user in to_sign_list:
+            new_list = []
+            for user in to_sign_list[:]:
                 print('**********' + user['name'] + '**********')
                 if sign(t.tm_mon, t.tm_mday, user, smtp_host, mail_username, mail_password):
                     print('Sign for {} on {}.{} successfully!'.format(
                         user['name'], t.tm_mon, t.tm_mday))
-                    to_sign_list.remove(user)   # 移除打卡成功的用户
                 else:
                     print('Sign for {} on {}.{} failed!'.format(
                         user['name'], t.tm_mon, t.tm_mday))
-
+                    new_list.append(user)
+            to_sign_list = new_list
         # else: 都打完了
         time.sleep(1)
 
