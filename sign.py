@@ -53,6 +53,7 @@ def sendmsg(msg):
 
 # 登陆获得cookie
 def login(login_id, login_password, login_headers):
+    headers['Cookie'] = ''
     for _ in range(try_times):
         try:
             time.sleep(0.5)
@@ -62,7 +63,7 @@ def login(login_id, login_password, login_headers):
             # r.encoding = 'utf-8'
             # print(r.text)
             cookie = r.headers['Set-Cookie']
-            print(cookie)
+            # print(cookie)
             cookie = re.search(r'eai-sess=([a-zA-Z0-9]+)', cookie).group(0)
 
             login_headers['Cookie'] = cookie
