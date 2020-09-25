@@ -1,0 +1,19 @@
+{
+    "mail_username": "123456@qq.com",
+    "mail_password": "qwertyuiopasdfgh",
+    "smtp_host": "smtp.qq.com",
+    "users": [
+        {
+            "name": "张三",
+            "student_id": "011710101",
+            "student_password": "St123456",
+            "receiver_mail": "wuzii@qq.com"
+        },
+        {
+            "name": "Tony",
+            "student_id": "011710102",
+            "student_password": "St123456",
+            "receiver_mail": "jackeylove@qq.com"
+        }
+    ]
+}

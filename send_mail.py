@@ -14,8 +14,9 @@ def send_mail(mail_username, mail_password, mail_host, receiver, text, subject, 
 
         smtpObj = smtplib.SMTP_SSL(mail_host, 465)    # 25 为 SMTP 端口号 465是SMTP over SSL
         print('在login了')
+        print(mail_username, mail_password, )
         smtpObj.login(mail_username, mail_password)
-        print('在sned了')
+        print('send')
         smtpObj.sendmail(mail_username, [receiver], message.as_string())
         print('successfully send mail to ', receiver_name)
     except smtplib.SMTPException:
