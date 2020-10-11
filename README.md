@@ -6,15 +6,19 @@
 
 **免责声明: 此项目只可以用于技术学习讨论，请勿用于实际用于打卡，如果出现信息错误等后果概不负责**
 
-有问题欢迎提出issue或PR~
+有问题欢迎提出issue~
 
-## Useage
+如果感觉有用请给个⭐吧，秋梨膏
+
+## Usage
 
 ### Step 0
 
 安装Python3、Python3-pip、git、vim和screen，安装requests库
+
 如果没有安装，请及时下载安装
-如使用Yum安装包管理器可以使用如下命令
+
+如使用Yum安装包管理器，可以使用如下命令
 ``` sh
 sudo yum install python3 python3-pip git screen vim -y
 ```
@@ -26,6 +30,7 @@ sudo pip3 install requests
 ### Step 1
 
 下载本项目，可以git clone或Download Zip
+
 例如
 ``` sh
 git clone https://github.com/zombie12138/inuaa --depth=1
