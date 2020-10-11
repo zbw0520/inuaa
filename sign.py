@@ -129,7 +129,7 @@ def main():
     
     # 每一天先拷贝一下需要打卡的列表，然后打卡
     # 其他时间如果监测到待打卡的列表非空，就重新读打卡
-    to_sign_list = users.copy()
+    
     while True:
         t = time.localtime()
 
