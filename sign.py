@@ -98,7 +98,7 @@ def sign(m, d, user, smtp_host, mail_username, mail_password):
                 return True
             else:
                 print('打卡失败，尝试重新登陆')
-                user['cookie'] = login(id, password)
+                user['cookie'] = login(user['student_id'], user['student_password'])
         except:
             print('尝试失败')
             pass
